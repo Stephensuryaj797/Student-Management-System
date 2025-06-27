@@ -1,16 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>🎓 Student Management System - Online Coaching Portal</title>
-  <style>
-    body { font-family: Arial, sans-serif; padding: 30px; line-height: 1.6; }
-    h1, h2 { color: #2c3e50; }
-    code { background: #f4f4f4; padding: 2px 5px; border-radius: 4px; }
-    ul { margin-top: 0; }
-    .emoji { font-size: 1.2em; }
-  </style>
-</head>
+
+
 <body>
 
   <h1>🎓 Student Management System</h1>
