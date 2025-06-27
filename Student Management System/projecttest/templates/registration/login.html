@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(45deg, #00ff9d, #0091ff, #01018e);
+        }
+        .content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        .footer {
+            background-color:transparent;
+            padding: 20px 0;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            color: rgb(255, 255, 255);
+        }
+        .navbar {
+            background: transparent;
+            position: absolute;
+            width: 100%;
+            z-index: 1;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+            
+        }
+        .motivational-quote {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    color: white;
+    text-align: center;
+    z-index: 1;
+    width: 100%; /* Ensure the div spans the full width */
+    box-sizing: border-box; /* Include padding in the width */
+}
+
+        .motivational-quote .first-line {
+            font-weight: bold;
+            font-size: 45px;
+        }
+        .motivational-quote .second-line {
+            font-size: 20px;
+        }
+        .card {
+            background-color: rgb(255, 255, 255,0.5);
+            border-radius: 25px;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        .btn {
+    border-radius: 25px;
+    font-size: 18px; /* Increase the font size */
+    padding: 10px 20px; /* Increase the padding */
+}
+.navbar-brand{
+    color: white;
+    font-size: 25px;
+
+}
+    </style>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <!-- Brand -->
+            <a class="navbar-brand" href="#">ThinkReverse</a>
+
+            <!-- Toggler/collapsibe Button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="btn btn-light" href="{% url 'about' %}">Explore</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Motivational Quote -->
+    <div class="motivational-quote">
+        <div class="first-line">"Ready to Transform Your Future? Join Our Community Today!" 🚀🔑</div>
+        <div class="second-line"> Ready to ignite your potential and blaze a trail to success? 🔥 <br>Join our exclusive community of learners and unlock a world of possibilities. </div>
+    </div>
+
+    <div class="content">
+        <div class="container">
+            <div class="row justify-content-center mt-5">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2 class="card-title text-center">Login</h2>
+                            <form method="post" autocomplete="off">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-light">Login</button>
+                                </div><br>
+                                <a href="#">Create a New Account</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer">
+        Copyrights @ ThinkReverse 2024
+    </div>
+</footer>
+    
+
+    <!-- Bootstrap JS 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    -->
+</body>
+</html>

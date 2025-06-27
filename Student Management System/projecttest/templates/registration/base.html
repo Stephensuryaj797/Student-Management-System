@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessment Questions</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Assessment Questions</h1>
+        <form id="assessmentForm" method="post" onsubmit="return false;">
+            {% csrf_token %}
+            <!-- Your assessment questions here -->
+            <button id="submitButton" type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+        </form>
+    </div>
+
+    <!-- Congratulations Popup Modal -->
+    <div class="modal fade" id="congratulationsModal" tabindex="-1" role="dialog" aria-labelledby="congratulationsModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="congratulationsModalLabel">Congratulations!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>You have successfully submitted your assessment.</p>
+                    <!-- You can customize the content of the modal body as needed -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        document.getElementById('assessmentForm').addEventListener('submit', function() {
+            // Show the congratulations modal
+            $('#congratulationsModal').modal('show');
+        });
+    </script>
+</body>
+</html>
+
+
+<div class="form-group">
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="question_{{ question.id }}" id="option_{{ question.id }}_1" value="1">
+        <label class="form-check-label" for="option_{{ question.id }}_1">{{ question.option_1 }}</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="question_{{ question.id }}" id="option_{{ question.id }}_2" value="2">
+        <label class="form-check-label" for="option_{{ question.id }}_2">{{ question.option_2 }}</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="question_{{ question.id }}" id="option_{{ question.id }}_3" value="3">
+        <label class="form-check-label" for="option_{{ question.id }}_3">{{ question.option_3 }}</label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="question_{{ question.id }}" id="option_{{ question.id }}_4" value="4">
+        <label class="form-check-label" for="option_{{ question.id }}_4">{{ question.option_4 }}</label>
+    </div>
+</div>

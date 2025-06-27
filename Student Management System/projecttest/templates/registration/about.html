@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* External CSS file */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.background-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    background: linear-gradient(45deg, #00ff9d, #0091ff, #01018e);
+}
+
+.content-container {
+    flex: 1; /* Fill remaining vertical space */
+    padding-top: 10px; /* Adjust as needed based on navbar height */
+    padding-bottom: 100px; /* Adjust as needed based on footer height */
+    
+}
+
+
+       
+        .footer {
+            background-color: transparent;
+            padding: 20px 0;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            color: #fff;
+            font-size: 14px;
+        }
+        .navbar {
+            background: rgba(255, 255, 255, 0.187);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .btn {
+            border-radius: 25px;
+            font-size: 18px;
+            padding: 10px 20px;
+        }
+        .navbar-brand{
+            color: #fff;
+            font-size: 25px;
+        }
+        .container_card {
+            max-width: 100%;
+            padding: 10px;
+            margin-top: 80px;
+            position: relative;
+            justify-content: center;
+        }
+
+        .title {
+            font-weight: bold;
+            font-size: 40px;
+            margin-bottom: 20px;
+            padding-left: 130px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 25px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            flex-basis: calc(33.33% - 20px);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 5px 15px rgb(1, 255, 251);
+        }
+
+        .card p {
+            margin: 0;
+        }
+
+        .ending-line {
+            font-size: 35px;
+            margin-top: 35px;
+            color: #fff;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .copyright {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .form-container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 70px;
+    text-align: center;
+}
+
+.form-container h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.form-container p {
+    text-align: center;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-group input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.form-group input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+.about-card {
+    background-color: rgba(255, 255, 255); /* White background with 80% transparency */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 50px;
+    max-width: 1300px; /* Adjust the maximum width as needed */
+    margin: 0 auto; /* Center the card horizontally */
+}
+
+
+    </style>
+</head>
+<body>
+    <div class="background-container">
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <!-- Brand -->
+            <a class="navbar-brand" href="#">ThinkReverse</a>
+            <!-- Toggler/collapsibe Button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="btn btn-light" href="{% url 'logout' %}">Back to login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content-container">
+    <div class="container_card">
+        <h1 class="title">🔓 Unlock Your Potential with Our Exclusive Coaching Services!</h1>
+        <div class="cards-container">
+            <div class="card">
+                <p>🎓 Engage in dynamic live sessions led by expert instructors who are passionate about your success.</p>
+            </div>
+            <div class="card">
+                <p>🔄 Access recorded sessions at your convenience. Rewatch lectures, review key concepts, and never miss out on important content.</p>
+            </div>
+            <div class="card">
+                <p>📚 Gain a competitive edge with meticulously crafted digital notes. Receive soft copies of lecture notes, summaries, and supplementary materials to reinforce your understanding.</p>
+            </div>
+            <div class="card">
+                <p>📝 Track your progress through regular assessments. Receive detailed feedback and personalized guidance to achieve your goals.</p>
+            </div>
+            <div class="card">
+                <p>🎯 Challenge yourself with graded assessments to master course material. Refine your skills and push your boundaries.</p>
+            </div>
+            <div class="card">
+                <p>🌟 Experience learning tailored to your unique needs. Benefit from personalized attention, customized study plans, and one-on-one support.</p>
+            </div>
+            <div class="card">
+                <p>🚀 Access a cutting-edge curriculum designed to equip you with the knowledge, skills, and tools needed to excel in your field.</p>
+            </div>
+            <div class="card">
+                <p>🤝 Join a vibrant community of learners dedicated to growth, collaboration, and success. Connect with peers, share insights, and seek support throughout your learning journey.</p>
+            </div>
+        </div>
+        <h3 class="ending-line">Embark on a transformative learning experience with us. Choose excellence. Choose success. Choose ThinkReverse. 🚀📚🌟</h3>
+      </div>
+    
+      <div class="about-card">
+        <h2 style="color: #000000; text-align: center;">About ThinkReverse</h2>
+        <p>
+            At ThinkReverse, we believe in empowering individuals with knowledge, enlightening lives, and unlocking the potential for success. Our mission is to make education accessible to everyone, regardless of their background or circumstances. 🚀📚🌟
+        </p>
+        <p>
+            We understand the importance of language in learning, which is why we are committed to ensuring that each individual fully comprehends the concepts taught. We provide support in regional languages to ensure clarity and understanding at every step of the learning journey. 🌍🗣️
+        </p>
+        <p>
+            Our dedicated team is here to support you every step of the way. From technical assistance to administrative support, material guidance to live class assistance, we're here to ensure that you have everything you need to succeed. 💼👩‍💻📝
+        </p>
+        <p>
+            Join us at ThinkReverse and embark on a journey of enlightenment, empowerment, and endless possibilities. Let's unlock your potential together! 🚀🔓💡
+        </p>
+    </div>
+    
+    
+</div>
+<div class="form-container">
+    <h2>Enrollment Form</h2>
+    <p>Unlock your potential with our exclusive coaching services! Fill out the form below to enroll.</p>
+    <form action="#" method="post">
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" name="phone" required>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+</div>
+    <footer>
+        <div class="footer">
+            <p class="copyright">Copyrights @ ThinkReverse 2024</p>
+        </div>
+    </footer>
+</div>
+
+    <!-- Bootstrap JS -->
+    <!-- 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    -->
+</body>
+</html>

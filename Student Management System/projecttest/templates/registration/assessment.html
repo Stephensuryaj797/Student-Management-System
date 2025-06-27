@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessment</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .background-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100%;
+            background: linear-gradient(45deg, #00ff9d, #0091ff, #01018e);
+        }
+        
+        h1 {
+            color: white;
+        }
+        .navbar-brand {
+            color: #fff;
+            font-size: 25px;
+        }
+        .card {
+        border: none;
+        background-color: rgba(255, 255, 255);
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        margin-bottom: 20px;
+        padding: 20px;
+        margin-top: 30px;
+        margin-left: 50px;
+    }
+
+    .card-body {
+        overflow: hidden;
+
+    }
+
+    .btn {
+        border-radius: 25px;
+        font-size: 18px;
+        padding: 10px 20px;
+        border: none;
+        transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+        background-color: #0089b3;
+    }
+
+    .btn.disabled,
+    .btn:disabled {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        color: #fff;
+    }
+    .container_list{
+        border: none;
+        background-color: rgba(255, 255, 255);
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+        margin-bottom: 20px;
+        padding: 20px;
+        margin-top: 30px;
+        margin-left: 50px;
+        height: fit-content;
+    }
+    .Overallscore{
+        color: #0091ff;
+        font-size: 30px;
+        font-style: oblique;
+    }
+    </style>
+</head>
+<body>
+    <div class="background-container"> 
+    <nav class="navbar navbar-expand-lg bg-primary">
+        <div class="container">
+            <!-- Brand -->
+            <a class="navbar-brand" href="#">ThinkReverse</a>
+    
+            <!-- Toggler/collapsible Button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="btn btn-light" href="{% url 'logout' %}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="mb-4">Assessment</h2>
+                    {% for data in assessment_data %}
+                    <h5 class="mb-1">{{ data.assessment.name }}</h5>
+                    <p class="mb-1">Start Date: {{ data.assessment.start_date }}</p>
+                    <p class="mb-1">End Date: {{ data.assessment.end_date }}</p><br>
+                    {% if data.completed %}
+                    <div>  
+                        <p>Your score: {{ data.completed_assessment.percentage_secured }}</p>
+                        {% if data.completed_assessment.percentage_secured < 45 %}
+                                <h3 style="color: red;">Fail, work hard</h3>
+                            {% elif data.completed_assessment.percentage_secured >= 45 and data.completed_assessment.percentage_secured <= 75 %}
+                                <h3 style="color: rgb(255, 145, 0);">Good Job!</h3>
+                            {% else %}
+                                <h3 style="color: rgb(13, 255, 0);">Excellent work!!</h3>
+                            {% endif %}
+                        <button class="btn btn-success disabled">Assessment Completed</button>
+                    </div>
+                    {% else %}
+                    <a href="{% url 'question' course_id=course.id assessment_id=data.assessment.id %}" class="btn btn-primary">Start Assessment</a><br>
+                    {% endif %}
+                    <br>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="container_list col-md-4">
+            <h2 class="my-4">Assessment List</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Assessment Name</th>
+                        <th>Status</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for data in assessment_data %}
+                    <tr>
+                        <td>{{ data.assessment.name }}</td>
+                        <td>{% if data.completed %}Completed{% else %}Not Completed{% endif %}</td>
+                        <td>{{ data.completed_assessment.percentage_secured }}</td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <td colspan="2"><h1 class="Overallscore">Overall Percentage</h1>\</td>
+                        <td><h1 class="Overallscore">{{ overall_percentage|floatformat:"2" }}</h1></td>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    
+    
+
+</div>
+    
+
+</body>
+</html>

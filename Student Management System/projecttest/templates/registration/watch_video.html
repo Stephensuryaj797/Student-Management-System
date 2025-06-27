@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch Video</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Plyr CSS -->
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.8/plyr.css">
+    <style>
+         html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .background-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100%;
+            background: linear-gradient(45deg, #00ff9d, #0091ff, #01018e);
+        }
+        .navbar {
+            background: rgba(53, 53, 53, 0.173);
+            position: relative;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+
+        }
+        .btn {
+            border-radius: 25px;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .video-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 10px auto;
+        }
+        .Videowd{
+            text-decoration: underline;
+        }
+        h1 {
+            color: white;
+        }
+        .navbar-brand {
+            color: #fff;
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-container"> 
+    <nav class="navbar navbar-expand-lg  bg-primary">
+        <div class="container">
+            <!-- Brand -->
+            
+            <a class="navbar-brand" href="#">ThinkReverse</a>
+            <!-- Toggler/collapsible Button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="btn btn-light" href="#">Profile</a>
+                        <a class="btn btn-light" href="{% url 'logout' %}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<div class="container text-center mt-5">
+    <h1 class="Videowd">
+        Watch Video
+    </h1>
+    
+    <h1 class="videoname">{{ video.title }}</h1><br>
+    <div class="video-container">
+        <!-- Video player container -->
+        <div class="plyr__video-embed" id="player">
+            <iframe src="{{ video.video_url }}" allowfullscreen allowtransparency allow="autoplay"></iframe>
+        </div>
+    </div><br>
+    <a href="{% url 'home' %}" class="btn btn-light">back</a>
+</div>
+</div>
+<!-- Plyr JS -->
+<script src="https://cdn.plyr.io/3.6.8/plyr.js"></script>
+
+<!-- Script to initialize Plyr video player -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Initialize Plyr video player
+        const player = new Plyr('#player', {
+            controls: ['play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen'],
+        });
+    });
+</script>
+</body>
+</html>
